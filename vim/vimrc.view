@@ -1,4 +1,5 @@
-
+" View ... 見た目に関する設定を書いておく
+" ------------------------------------------------ + -----------------------------
 set showmatch                                     "| 括弧の対応をハイライト
 set number                                        "| 行番号表示
 set list                                          "| 不可視文字表示
@@ -26,4 +27,3 @@ highlight CursorLine ctermbg=black guibg=black
 :set lazyredraw
 " 高速ターミナル接続を行う
 :set ttyfast
-

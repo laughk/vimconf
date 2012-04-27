@@ -22,39 +22,19 @@ set nomousehide
 
 " メニューバーを表示しない。
 set guioptions-=m
-" ツールバーを表示しない。& 文字化け対策(windows向け)
-if has('win32') || has('win64')
-  set guioptions-=T
-  " メニューを強制的に EUC-JP にする
-  source $VIMRUNTIME/delmenu.vim
-  set langmenu=ja_JP.euc-jp.vim
-  source $VIMRUNTIME/menu.vim
-endif
+" ツールバーを表示しない。& 文字化け対策
+set guioptions-=T
+" メニューを強制的に EUC-JP にする
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_JP.euc-jp.vim
+source $VIMRUNTIME/menu.vim
 
 " フォントをConsolasにする。
-if has('mac')
-  set guifont=Consolas:h12
-elseif has('unix')
-  set guifont=Ricty\ 10
-elseif has('win32') || has('win64')
-  set guifont=Consolas:h8:cSHIFTJIS
-endif
+set guifont=Consolas:h8:cSHIFTJIS
 
 " 半透明に表示する（Mac,Win向け）
-if has ('gui_macvim')
-  set imdisable
-  set transparency=10
-elseif has('win32') || has('win64')
-  gui
-  set transparency=224
-endif
-
-" MacVim-Kaoriya で +perl,+ruby,+pyhtonにする
-if has('gui_macvim')
-  let $PERL_DLL="/System/Library/Perl/lib/5.10/libperl.dylib"
-  let $RUBY_DLL="/usr/lib/libruby.dylib"
-  let $PYTHON_DLL="/usr/lib/libpython2.7.dylib"
-endif
+gui
+set transparency=224
 
 " ----------------------------------
 "  GVim のときのみ必要そうになりそうなコマンドマクロ

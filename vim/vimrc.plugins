@@ -1,3 +1,5 @@
+" Plugins ... プラグインに関する設定を書いておく。
+" ------------------------------------------------------------------------
 " // MiniBufExplorer ==============================================
 " hjklで移動
 let g:miniBufExplMapWindowNavVim=1
@@ -89,18 +91,8 @@ vmap fu <Plug>(openbrowser-open)
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_enable_smart_case = 1
 
-if has('win32') || has('win64')
-  " Display user name on Windows.
-  let g:vimshell_prompt = "[".$USERNAME."] $ "
-else
-  " Display user name on Linux.
-  let g:vimshell_prompt = "[".$USER."] $ "
-  call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexeeog')
-  call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe  amarok')
-  let g:vimshell_execute_file_list['zip'] = 'zipinfo'
-  call vimshell#set_execute_file('tgz,gz', 'gzcat')
-  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
-endif
+" Display user name on Windows.
+let g:vimshell_prompt = "[".$USERNAME."] $ "
 
 function! g:my_chpwd(args, context)
   call vimshell#execute('echo "chpwd"')
@@ -142,37 +134,20 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' "| neocomplcacheを自�
 let g:neocomplcache_enable_auto_select = 1              "| 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
 
 " Define dictionary. -------------------------------------------
-if has('win32') || has('win64')
-  let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/vimfiles/_vimshell_hist',
-    \ 'scala' : $HOME.'/vimfiles/bundle/vim-scala/dict/scala.dict',
-    \ 'java' : $HOME.'/vimfiles/dict/java.dict',
-    \ 'c' : $HOME.'/vimfiles/dict/c.dict',
-    \ 'cpp' : $HOME.'/vimfiles/dict/cpp.dict',
-    \ 'javascript' : $HOME.'/vimfiles/dict/javascript.dict',
-    \ 'ocaml' : $HOME.'/vimfiles/dict/ocaml.dict',
-    \ 'perl' : $HOME.'/vimfiles/dict/perl.dict',
-    \ 'php' :  $HOME.'/vimfiles/dict/php.dict',
-    \ 'scheme' : $HOME.'/vimfiles/dict/scheme.dict',
-    \ 'vm' : $HOME.'/vimfiles/dict/vim.dict'
-  \ }
-else
-  let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
-    \ 'java' : $HOME.'/.vim/dict/java.dict',
-    \ 'c' : $HOME.'/.vim/dict/c.dict',
-    \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
-    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
-    \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
-    \ 'perl' : $HOME.'/.vim/dict/perl.dict',
-    \ 'php' :  $HOME.'/.vim/dict/php.dict',
-    \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
-    \ 'vm' : $HOME.'/.vim/dict/vim.dict'
-  \ }
-endif
+let g:neocomplcache_dictionary_filetype_lists = {
+  \ 'default' : '',
+  \ 'vimshell' : $HOME.'/vimfiles/_vimshell_hist',
+  \ 'scala' : $HOME.'/vimfiles/bundle/vim-scala/dict/scala.dict',
+  \ 'java' : $HOME.'/vimfiles/dict/java.dict',
+  \ 'c' : $HOME.'/vimfiles/dict/c.dict',
+  \ 'cpp' : $HOME.'/vimfiles/dict/cpp.dict',
+  \ 'javascript' : $HOME.'/vimfiles/dict/javascript.dict',
+  \ 'ocaml' : $HOME.'/vimfiles/dict/ocaml.dict',
+  \ 'perl' : $HOME.'/vimfiles/dict/perl.dict',
+  \ 'php' :  $HOME.'/vimfiles/dict/php.dict',
+  \ 'scheme' : $HOME.'/vimfiles/dict/scheme.dict',
+  \ 'vm' : $HOME.'/vimfiles/dict/vim.dict'
+\ }
 
 " Define keyword. -----------------------------------------------
 if !exists('g:neocomplcache_keyword_patterns')
@@ -181,11 +156,7 @@ endif
   let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " ユーザー定義スニペット保存ディレクトリ -----------------------
-if has('win32') || has('win64')
-  let g:neocomplcache_snippets_dir = $HOME.'/vimfiles/snippets'
-else
-  let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
-endif
+let g:neocomplcache_snippets_dir = $HOME.'/vimfiles/snippets'
 
 " スニペット --------------------------------------------------
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -257,11 +228,7 @@ let g:Align_xstrlen = 3
 
 " // Pydiction =============================================
 "  辞書ファイルの場所を指定 -------------------------------------
-if has('win32') || has('win64')
-  let g:pydiction_location = $HOME.'/vimfiles/bundle/Pydiction/complete-dict'
-else
-  let g:pydiction_location = $HOME.'/.vim/bundle/Pydiction/complete-dict'
-endif
+" let g:pydiction_location = $HOME.'/vimfiles/bundle/Pydiction/complete-dict'
 
 " // Vimfiler ==============================================
 command! Vf :VimFiler
@@ -273,30 +240,57 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
 
+" // VimWiki ==============================================
+set runtimepath+=~/vimfiles/bundle/vimwiki
+let vimwiki_dir     = $HOME.'/Dropbox/QFixHowm/vimwiki/src'
+let vimwiki_htmldir = $HOME.'/Dropbox/QFixHowm/vimwiki/html_doc'
+let vimwiki_list    = [{'path':vimwiki_dir, 'path_html': vimwiki_htmldir}]
+
 " // QFixHowm =============================================
 " 保存先の指定
-if has('win32') || has('win64')
-  set runtimepath+=~/vimfiles/bundle/qfixhowm
-  let howm_dir = $HOME.'/Dropbox/QFixHowm'
-else
-  set runtimepath+=~/.vim/bundle/qfixhowm
-  let howm_dir = $HOME.'/Dropbox/QFixHowm'
-endif
+set runtimepath+=~/vimfiles/bundle/qfixhowm
+let howm_dir = $HOME.'/Dropbox/QFixHowm/howm'
 
 " 基本設定 ----------------------------------------------------------------------------
 let QFixHowm_FileType = 'qfix_memo'                                    "| ファイルタイプの拡張
 let howm_fileencoding = 'utf-8'                                        "| utf8で作成する
 let howm_fileformat = 'unix'                                           "| fileformat は unixで
 let QFixHowm_RecentMode = 2                                            "| エントリのタイムスタンプを自動更新する
-let QFixHowm_QuickMemoFile  = "Qmem-00-0000-00-00-000000.howm"         "| クイックメモのファイル名(デフォルト)
-let QFixHowm_QuickMemoFile1 = "Qmem-00-0000-00-00-000000_utgym.howm"   "| クイックメモのファイル名(utgyn)
-let QFixHowm_QuickMemoFile2 = "Qmem-00-0000-00-00-000000_mp.howm"      "| クイックメモのファイル名(utgyn)
-let QFixHowm_QuickMemoFile3 = "Qmem-00-0000-00-00-000000_private.howm" "| クイックメモのファイル名(utgyn)
 
 " super pre スクリプトの呼び出し
 nnoremap <silent> g,. :<C-u>call HatenaSuperPreHighlight()<CR>
 
+" // QFixHowm + VimWiki ====================================
+" howm_dirの切替コマンド
+"" 通常の Howmに戻す -------------------------------------
+nnoremap g,hm :call QFixHowmEnvMain()<CR>
+function! QFixHowmEnvMain()
+    let g:QFixHowm_FileType = 'qfix_memo'
+    let g:howm_dir = '~/Dropbox/QFixHowm/howm'
+    let g:QFixHowm_QuickMemoFile  = "Qmem-00-0000-00-00-000000.howm"         "| クイックメモのファイル名(デフォルト)
+    let g:QFixHowm_QuickMemoFile1 = "Qmem-00-0000-00-00-000000_utgym.howm"   "| クイックメモのファイル名(utgyn)
+    let g:QFixHowm_QuickMemoFile2 = "Qmem-00-0000-00-00-000000_mp.howm"      "| クイックメモのファイル名(utgyn)
+    let g:QFixHowm_QuickMemoFile3 = "Qmem-00-0000-00-00-000000_private.howm" "| クイックメモのファイル名(utgyn)
+    silent! call QFixHomwSetup()
+    echo g:howm_dir
+endfunction
+"" VimWikiモード -----------------------------------------
+nnoremap g,vw :call QFixHowmEnvVimWiki()<CR>
+function! QFixHowmEnvVimWiki()
+    let g:QFixHowm_FileType = 'vimwiki'
+    let g:QFixHowm_Title  = '='
+    let g:howm_dir = '~/Dropbox/QFixHowm/vimwiki/src'
+    let g:howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.wiki'
 
-" // errormarker =========================================
-" キーバインドカスタム ------------------------------------
-" nmap <silent> <unique> <Leader>ee :ErrorAtCursor<CR>
+    "wiki新規エントリのテンプレート
+    let g:QFixHowm_Template_wiki = [
+      \"%TITLE%  %TITLE%",
+      \""
+    \]
+    "wikiテンプレート(カーソル移動)
+    let g:QFixHowm_Cmd_NewEntry_wiki = 'f a'
+
+    silent! call QFixHomwSetup()
+    echo g:howm_dir
+endfunction
+
