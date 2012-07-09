@@ -18,7 +18,7 @@ set nomousehide
 "  表示全般の設定
 " ----------------------------------
 " GVimのカラーテーマの設定
-:colorscheme evening
+:colorscheme molokai
 
 " メニューバーを表示しない。
 set guioptions-=m

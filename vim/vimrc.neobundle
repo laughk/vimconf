@@ -20,6 +20,9 @@ NeoBundle 'css_color.vim'
 NeoBundle 'surround.vim'
 NeoBundle 'vtreeexplorer'
 NeoBundle 'vimwiki'
+NeoBundle 'moin.vim'
+NeoBundle 'sh.vim'
+NeoBundle 'molokai'
 
 " from Github -----------------------------------------
 NeoBundle 'Integriti/pyshell'
