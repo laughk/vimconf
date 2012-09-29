@@ -244,3 +244,9 @@ let g:indent_guides_guide_size = 1
 " ++++++++++++++++++++++++++++++++++++++++++++++++++++
 " pl,pmファイルの__DATA__ 箇所のハイライトを有効化
 let mojo_highlight_data = 1
+
+" ++++++++++++++++++++++++++++++++++++++++++++++++++++
+" Markdonw (vim-ft-markdown_fold)
+" ++++++++++++++++++++++++++++++++++++++++++++++++++++
+" *.md でMarkdonwと認識させる
+autocmd BufNewFile,BufRead *.md set ft=markdown
