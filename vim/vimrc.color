@@ -1,7 +1,7 @@
 " 色に関する設定
 " ------------------------------------------------------------------------
-set t_Co=256
+set t_Co=16
 " ハイライト on
 syntax enable
 " カラースキーム
-colorscheme zenburn
+colorscheme desert

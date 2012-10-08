@@ -2,9 +2,11 @@
 " -------------------------------------------------------------------
 " 改行コードの自動認識
 set ffs=unix,dos,mac
+set fileencodings=utf-8,cp932
 " デフォルトエンコーディング
-set encoding=utf-8
-set termencoding=utf-8
+set fileencoding=utf-8
+set encoding=cp932
+set termencoding=cp932
 
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
