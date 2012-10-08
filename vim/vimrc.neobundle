@@ -1,7 +1,9 @@
 " Neobundle ... Neobundleに関する設定を書いておく
 " ------------------------------------------------------------------------------------
 set nocompatible
+let g:neobundle_default_git_protocol = 'https'
 filetype plugin indent off
+let
 
 set rtp+=~/vimfiles/bundle/neobundle.vim/
 call neobundle#rc($HOME.'/vimfiles/bundle/')
